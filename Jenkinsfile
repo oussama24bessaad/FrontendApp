@@ -46,10 +46,10 @@ pipeline{
                 }
             }
         }
-        stage("deploy"){
-            steps{
-                echo 'deployment'
-            }
-        }
+//         stage("deploy"){
+//             steps{
+//                 echo 'deployment'
+//             }
+//         }
     }
 }
