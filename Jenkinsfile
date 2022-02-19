@@ -37,7 +37,7 @@ pipeline{
         
         stage("docker-build"){
             steps{
-                sh 'sudo chmod 666 /var/run/docker.sock'
+                sh 'chmod 666 /var/run/docker.sock'
                 script {
                     dockerImage = docker.build imagename   
                     docker.withRegistry( '', registryCredential ) {
