@@ -2,25 +2,25 @@ pipeline{
     environment {
         imagename = "oussama24/frontendapp"
         registryCredential = "dockerhub_credentials"
-        // dockerImage = ''
-        // def scannerHome = tool 'sonarqube-scanner'
+        dockerImage = 'frontendapp'
+        def scannerHome = tool 'sonarqube-scanner'
     }
     agent any
     stages{
-        // stage("test-sonar"){
-        //     steps{
-        //         script {
-        //             withSonarQubeEnv("sonarQube") {
-        //             sh "${scannerHome}/bin/sonar-scanner \
-        //                 -Dsonar.projectKey=frontendapp \
-        //                 -Dsonar.sources=. \
-        //                 -Dsonar.host.url=http://localhost:9000 \
-        //                 -Dsonar.login=admin \
-        //                 -Dsonar.password=P@ssword"
-        //             } 
-        //         }
-        //     }
-        // }
+        stage("test-sonar"){
+            steps{
+                script {
+                    withSonarQubeEnv("sonarQube") {
+                    sh "${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=oussamaDevops \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=admin \
+                        -Dsonar.password=admin007"
+                    } 
+                }
+            }
+        }
         stage("build"){
             
             steps{
