@@ -1,7 +1,7 @@
 pipeline{
     environment {
         imagename = "oussama24/frontendapp"
-        registryCredential = credentials('dockerhub_credentials')
+        registryCredential = "dockerhub_credentials"
         dockerImage = 'frontendapp'
 //         def scannerHome = tool 'sonarqube-scanner'
     }
@@ -46,10 +46,10 @@ pipeline{
                 }
             }
         }
-//         stage("deploy"){
-//             steps{
-//                 echo 'deployment'
-//             }
-//         }
+        stage("deploy"){
+            steps{
+                echo 'deployment'
+            }
+        }
     }
 }
