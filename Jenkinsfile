@@ -1,7 +1,7 @@
 pipeline{
     environment {
         imagename = "oussama24/frontendapp"
-        registryCredential = "dockerhub_credentials"
+        registryCredential = credentials('dockerhub_credentials')
         dockerImage = 'frontendapp'
 //         def scannerHome = tool 'sonarqube-scanner'
     }
@@ -28,6 +28,12 @@ pipeline{
                 sh 'npm run build'
             }
         }
+        stage('Login') {
+
+			steps {
+				sh 'echo $registryCredential_PSW | docker login -u $registryCredential_USR --password-stdin'
+			}
+		}
         
         stage("docker-build"){
             steps{
