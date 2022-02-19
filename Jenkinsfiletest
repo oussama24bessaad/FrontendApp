@@ -1,0 +1,47 @@
+pipeline {
+  environment {
+    registry = "oussama24/frontendapp"
+    registryCredential = 'dockerhub_credentials'
+    dockerImage = 'frontendapp'
+  }
+  agent any
+  
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/oussama24bessaad/FrontendApp'
+      }
+    }
+    stage('Build (npm)') {
+       steps {
+         sh 'npm install'
+       }
+    }
+    
+    stage('Images List') {
+      steps {
+        sh 'docker images oussama24/frontendapp'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Pushing Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+  
+}
+}
+© 2022 GitHub, Inc.
+Terms
+Privacy
