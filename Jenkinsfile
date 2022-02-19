@@ -37,8 +37,7 @@ pipeline{
         
         stage("docker-build"){
             steps{
-                sh 'chmod 666 /var/run/docker.sock'
-                script {
+                    script {
                     dockerImage = docker.build imagename   
                     docker.withRegistry( '', registryCredential ) {
                     dockerImage.push("$BUILD_NUMBER")
