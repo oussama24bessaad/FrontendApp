@@ -3,14 +3,14 @@ pipeline{
         imagename = "oussama24/frontendapp"
         registryCredential = "dockerhub_credentials"
         dockerImage = 'frontendapp'
-        scannerHome = tool 'sonarqube-scanner'
+        scannerHome = tool 'SonarQube Scanner 4.6.2.2472'
     }
     agent any
     stages{
-        stage("test-sonar"){
+        stage("SonarQube analysis"){
             steps{
                 script {
-                    withSonarQubeEnv("sonarQube") {
+                    withSonarQubeEnv("sonarQube Scanner") {
                     sh "${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectKey=oussamaDevops \
                         -Dsonar.sources=. \
