@@ -21,7 +21,7 @@ pipeline{
                         -Dsonar.password=admin007"
                     } 
                 }
-            }
+            
         }
         stage("build"){
             
