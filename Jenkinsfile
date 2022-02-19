@@ -3,7 +3,7 @@ pipeline{
         imagename = "oussama24/frontendapp"
         registryCredential = "dockerhub_credentials"
         dockerImage = 'frontendapp'
-        def scannerHome = tool 'sonarqube-scanner'
+        scannerHome = tool 'sonarqube-scanner'
     }
     agent any
     stages{
