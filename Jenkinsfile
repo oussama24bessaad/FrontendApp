@@ -28,12 +28,12 @@ pipeline{
                 sh 'npm run build'
             }
         }
-        stage('Login') {
+//         stage('Login') {
 
-			steps {
-				sh 'echo $registryCredential_PSW | docker login -u $registryCredential_USR --password-stdin'
-			}
-		}
+// 			steps {
+// 				sh 'echo $registryCredential_PSW | docker login -u $registryCredential_USR --password-stdin'
+// 			}
+// 		}
         
         stage("docker-build"){
             steps{
