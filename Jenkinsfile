@@ -10,7 +10,7 @@ pipeline{
 //         stage("SonarQube analysis"){
 //             steps{
 //                 script {
-//                     scannerHome = tool 'SonarQube Scanner 4.6.2.2472'
+//                     scannerHome = tool 'SonarQube Scanner 2.8'
 //                 }
 //                     withSonarQubeEnv("SonarQube Scanner") {
 //                     sh "${scannerHome}/bin/sonar-scanner \
