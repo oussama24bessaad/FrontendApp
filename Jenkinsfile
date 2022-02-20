@@ -27,8 +27,7 @@ pipeline{
         stage('SonarQube analysis') {
                     
             steps{
-                scrip
-             
+                          
                     withSonarQubeEnv('sonarqube-9.3') { 
         // If you have configured more than one global server connection, you can specify its name
                 sh "'SonarQube Scanner 4.6.2'/bin/sonar-scanner"
