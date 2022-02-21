@@ -3,7 +3,7 @@ pipeline{
         imagename = "oussama24/frontendapp"
         registryCredential = "dockerhub_credentials"
         dockerImage = 'frontendapp'
-        def scannerHome = tool 'SonarScanner', type: ‘hudson.plugins.sonar.SonarRunnerInstallation’
+//         def scannerHome = tool 'SonarScanner', type: ‘hudson.plugins.sonar.SonarRunnerInstallation’
     }
     agent any
     stages{
@@ -13,16 +13,16 @@ pipeline{
         stage('SonarQube analysis') {
                     
             steps{
-                script{
+               def scannerHome = tool 'SonarScanner', type: ‘hudson.plugins.sonar.SonarRunnerInstallation’
                     withSonarQubeEnv('sonarqube-server') { 
         // If you have configured more than one global server connection, you can specify its name
                        sh "${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=frontend \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=admin \
-                        -Dsonar.password=admin007"
-                    }
+//                         -Dsonar.projectKey=frontend \
+//                         -Dsonar.sources=. \
+//                         -Dsonar.host.url=http://localhost:9000 \
+//                         -Dsonar.login=admin \
+//                         -Dsonar.password=admin007"
+                    
                 }         
             }
         }
