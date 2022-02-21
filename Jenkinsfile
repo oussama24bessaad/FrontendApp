@@ -3,34 +3,20 @@ pipeline{
         imagename = "oussama24/frontendapp"
         registryCredential = "dockerhub_credentials"
         dockerImage = 'frontendapp'
-        
+        scannerHome = tool 'SonarScanner 4.6.2'
     }
     agent any
     stages{
-//         stage("SonarQube analysis"){
-//             steps{
-//                 script {
-//                     scannerHome = tool 'SonarQube Scanner 4.6.2.2472'
-//                 }
-//                     withSonarQubeEnv("SonarQube Scanner") {
-//                     sh "${scannerHome}/bin/sonar-scanner \
-//                         -Dsonar.projectKey=oussamaDevops \
-//                         -Dsonar.sources=. \
-//                         -Dsonar.host.url=http://localhost:9000 \
-//                         -Dsonar.login=admin \
-//                         -Dsonar.password=admin007"
-//                     } 
-//                 }
+
             
-//         }
         
         stage('SonarQube analysis') {
                     
             steps{
-                          
+//                         
                     withSonarQubeEnv('sonarqube-9.3') { 
         // If you have configured more than one global server connection, you can specify its name
-                sh "'SonarQube Scanner 4.6.2'/bin/sonar-scanner"
+                        sh "${scannerHome}/bin/sonar-scanner"
         }
       }
         }
