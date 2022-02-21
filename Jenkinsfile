@@ -16,7 +16,12 @@ pipeline{
                 script{
                     withSonarQubeEnv('sonarqube-server') { 
         // If you have configured more than one global server connection, you can specify its name
-                        sh "${scannerHome}/bin/sonar-scanner"
+                       sh "${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=frontend \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=admin \
+                        -Dsonar.password=admin007"
                     }
                 }         
             }
