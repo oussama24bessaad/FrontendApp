@@ -33,7 +33,7 @@ pipeline{
       
         stage("docker-build"){
             steps{  
-                    sh 'chown $USER /var/run/docker.sock'
+                    
                     script {
                     dockerImage = docker.build imagename   
                     docker.withRegistry( '', registryCredential ) {
