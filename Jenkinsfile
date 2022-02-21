@@ -13,7 +13,7 @@ pipeline{
                     
             steps{
                 script {
-               scannerHome = tool name: 'SonarScanner'
+               sonarScanner = tool name: 'SonarQube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     withSonarQubeEnv('sonarqube-server') { 
         
                        sh "${scannerHome}/bin/sonar-scanner"
