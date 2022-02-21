@@ -17,7 +17,7 @@ pipeline{
                scannerHome = tool 'SonarScanner'
                     withSonarQubeEnv('sonarqube-server') { 
         // If you have configured more than one global server connection, you can specify its name
-                       sh "${scannerHome}/bin/sonar-scanner \
+                       sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.host.url=xxx"
 //                         -Dsonar.projectKey=frontend \
 //                         -Dsonar.sources=. \
 //                         -Dsonar.host.url=http://localhost:9000 \
