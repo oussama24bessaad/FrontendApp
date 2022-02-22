@@ -65,7 +65,7 @@ pipeline{
                         script {
                             if ( params.DO_CLEANUP_AFTER_BUILD ) {
                                 deleteDir()
-                            }
+                                             }
                         }
                       }
                     }
@@ -73,6 +73,6 @@ pipeline{
                 }
         
         
-                }
+            }
+        }
     }
-
